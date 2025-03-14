@@ -41,8 +41,22 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'courses.apps.CoursesConfig',
     'ckeditor',
-    'ckeditor_uploader'
+    'ckeditor_uploader',
+    'rest_framework',
+    'drf_yasg'
 ]
+
+import cloudinary
+import cloudinary.uploader
+from cloudinary.utils import cloudinary_url
+
+# Configuration
+cloudinary.config(
+    cloud_name = "dxxwcby8l",
+    api_key = "448651448423589",
+    api_secret = "ftGud0r1TTqp0CGp5tjwNmkAm-A", # Click 'View API Keys' above to copy your API secret
+    secure=True
+)
 
 CKEDITOR_UPLOAD_PATH = "ckeditors/lessons/"
 
