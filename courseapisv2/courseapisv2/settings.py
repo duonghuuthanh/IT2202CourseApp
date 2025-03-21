@@ -43,8 +43,13 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'rest_framework',
-    'drf_yasg'
+    'drf_yasg',
+    'oauth2_provider'
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': ( 'oauth2_provider.contrib.rest_framework.OAuth2Authentication',)
+}
 
 import cloudinary
 import cloudinary.uploader
@@ -54,7 +59,7 @@ from cloudinary.utils import cloudinary_url
 cloudinary.config(
     cloud_name = "dxxwcby8l",
     api_key = "448651448423589",
-    api_secret = "ftGud0r1TTqp0CGp5tjwNmkAm-A", # Click 'View API Keys' above to copy your API secret
+    api_secret = "ftGud0r1TTqp0CGp5tjwNmkAm-A",
     secure=True
 )
 
@@ -149,3 +154,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+OAUTH2_PROVIDER = { 'OAUTH2_BACKEND_CLASS': 'oauth2_provider.oauth2_backends.JSONOAuthLibCore' }
+
+CLIENT_ID = 'tLGXDbYyZZxeFpATWV3nj6GcuYjLxHUJ1LkKp0Af'
+CLIENT_SECRET = 'aS5xt5SgZr2A9NAR0uxf35HFAW16YO9KWltoZr1ZR4gymOB6Cvb4i1xCOPSj8CXX7ePguMHb180lLSw9er4PS8EQbdAn1Mirhr4ljpvDPT8HTA3TwdgaeP8RdjU7RuFd'
