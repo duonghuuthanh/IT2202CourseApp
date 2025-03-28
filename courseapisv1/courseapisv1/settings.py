@@ -43,8 +43,17 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'rest_framework',
-    'drf_yasg'
+    'drf_yasg',
+    'oauth2_provider'
 ]
+
+OAUTH2_PROVIDER = { 'OAUTH2_BACKEND_CLASS': 'oauth2_provider.oauth2_backends.JSONOAuthLibCore' }
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+    )
+}
 
 AUTH_USER_MODEL = 'courses.User'
 
@@ -152,3 +161,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CLIENT_ID = 'ILyDyjc8NaLYUIDopnyMr2RNTajpqDfSeAwJjYMu'
+CLIENT_SECRET = 'A1OWoALbe1FeYgZolfqt2xv9PgzqK3hIS9hj0JC44ZT1zlkMM1bion6PXcHFmGskorN9fPPoA7Mz5ioo2guNr8rG2ne30N9WLC0KiZULY1zp44y0fCeQiljriWiTC6iN'
