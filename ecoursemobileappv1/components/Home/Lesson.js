@@ -35,7 +35,7 @@ const Lesson = ({route}) => {
             <Text style={MyStyles.subject}>DANH SÁCH BÀI HỌC</Text>
             <FlatList  ListFooterComponent={loading && <ActivityIndicator />} 
                        data={lessons} renderItem={({ item }) => <List.Item title={item.subject} description={item.created_date} 
-                                                                                      left={() => <TouchableOpacity><Image style={MyStyles.avatar} source={{uri: item.image}} /></TouchableOpacity>} />} />
+                                                                                      left={() => <TouchableOpacity onPress={() => nav.navigate('lesson-details', {lessonId: item.id})}><Image style={MyStyles.avatar} source={{uri: item.image}} /></TouchableOpacity>} />} />
         </View>
     );
 }

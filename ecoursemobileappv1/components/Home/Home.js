@@ -73,13 +73,13 @@ const Home = () => {
 
     return (
         <SafeAreaView style={[MyStyles.container, MyStyles.p]}>
-            <Text style={MyStyles.subject}>DANH SÁCH KHÓA HỌC</Text>
+           
             <View style={[MyStyles.row, MyStyles.wrap]}>
                 <TouchableOpacity onPress={() => search(null, setCateId)}>
                     <Chip icon="label" style={MyStyles.m}>Tất cả</Chip>
                 </TouchableOpacity>
 
-                {categories.map(c => <TouchableOpacity key={c.id} onPress={() => search(c.id, setCateId)}>
+                {categories.map(c => <TouchableOpacity key={`Cate${c.id}`} onPress={() => search(c.id, setCateId)}>
                     <Chip icon="label" style={MyStyles.m}>{c.name}</Chip>
                 </TouchableOpacity>)}
             </View>
