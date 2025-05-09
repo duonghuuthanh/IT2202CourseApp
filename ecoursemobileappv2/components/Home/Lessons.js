@@ -1,9 +1,9 @@
 import { ActivityIndicator, FlatList, Image, Text, TouchableOpacity, View } from "react-native";
 import MyStyles from "../../styles/MyStyles";
-import { useEffect, useState } from "react";
 import { List } from "react-native-paper";
-import { useNavigation } from "@react-navigation/native";
 import Apis, { endpoints } from "../../configs/Apis";
+import { useEffect, useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 
 const Lessons = ({route}) => {
     const courseId = route.params?.courseId;
@@ -12,17 +12,17 @@ const Lessons = ({route}) => {
     const nav = useNavigation();
 
     const loadLessons = async () => {
+
         try {
             setLoading(true);
-
             let res = await Apis.get(endpoints['lessons'](courseId));
+            
             setLessons(res.data);
         } catch (ex) {
             console.error(ex);
         } finally {
             setLoading(false);
         }
-            
     }
 
     useEffect(() => {
@@ -31,11 +31,12 @@ const Lessons = ({route}) => {
 
     return (
         <View>
-            <FlatList ListFooterComponent={loading && <ActivityIndicator size={30} />} 
-                                data={lessons} renderItem={({item}) => <List.Item key={`Lesson${item.id}`} title={item.subject} description={item.created_date} 
-                                                left={() => <TouchableOpacity onPress={() => nav.navigate('lesson-details', {'lessonId': item.id})}>
-                                                    <Image style={MyStyles.avatar} source={{uri: item.image}} />
-                                                </TouchableOpacity>} />} />
+             <FlatList ListFooterComponent={loading && <ActivityIndicator />} data={lessons} 
+                                  renderItem={({item}) => <List.Item title={item.subject} 
+                                                                description={item.created_date} 
+                                                                left={() => <TouchableOpacity onPress={() => nav.navigate('lesson-details', {'lessonId': item.id})}>
+                                                                    <Image style={MyStyles.avatar} source={{uri: item.image}} />
+                                                                </TouchableOpacity>} />} />
         </View>
     );
 }

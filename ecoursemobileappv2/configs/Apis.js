@@ -1,16 +1,17 @@
 import axios from "axios";
 
-const BASE_URL = "https://thanhduong.pythonanywhere.com/";
+const BASE_URL = 'https://thanhduong.pythonanywhere.com/';
 
 export const endpoints = {
     'categories': '/categories/',
     'courses': '/courses/',
     'lessons': (courseId) => `/courses/${courseId}/lessons/`,
-    'register': '/users/',
     'login': '/o/token/',
+    'register': '/users/',
     'current-user': '/users/current-user/',
-    'lesson-details': (lessonId) => `/lessons/${lessonId}/`
-}
+    'lesson-details': (lessonId) => `/lessons/${lessonId}/`,
+    'comments': (lessonId) => `/lessons/${lessonId}/comments/`
+};
 
 export const authApis = (token) => {
     return axios.create({
@@ -18,7 +19,7 @@ export const authApis = (token) => {
         headers: {
             'Authorization': `Bearer ${token}`
         }
-    });
+    })
 }
 
 export default axios.create({

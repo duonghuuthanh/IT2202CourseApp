@@ -3,6 +3,11 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
     container: {
         flex: 1
+    },
+    subject: {
+        fontSize: 30,
+        fontWeight: "bold",
+        color: "blue"
     }, row: {
         flexDirection: "row"
     }, wrap: {
@@ -11,13 +16,9 @@ export default StyleSheet.create({
         margin: 5
     }, p: {
         padding: 5
-    }, subject: {
-        fontSize: 30,
-        fontWeight: "bold",
-        color: "blue"
     }, avatar: {
         width: 80,
         height: 80,
         borderRadius: 50
     }
-});
+})
